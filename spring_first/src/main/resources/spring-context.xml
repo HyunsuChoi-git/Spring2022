@@ -6,7 +6,21 @@
 	<!-- bean 설정하기 -->
 	<!-- id : bean컨테이너에 등록된 클래스를 찾을 때 사용. 클래스명과 동일하게. 소문자로 시작-->
 	<!-- class : 클래스 패키지명 경로 -->
-	<bean id="helloDAO" class="com.herachoicomp.spring.HelloDAO"></bean>
+	<bean id="helloDAO" class="com.herachoicomp.spring.dao.HelloDAO" />
+
+	<bean id="helloService" class="com.herachoicomp.spring.service.HelloService">
+		<!-- property : setter명. setter을 이용한 주입-->
+		<!-- name : 클래스에서 만들었던 메소드명 setHelloDAO에서 set이빠진 이름. 소문자로 시작 -->
+		<!-- ref : 참조하는 클래스의 bean ID -->
+		<property name="helloDAO" ref="helloDAO" />
+		<property name="anotherDAO" ref="anotherDAO"/>
+		
+		<!-- constructor-arg : 생성자를 이용한 주입 -->
+		<!-- ref : 참조하는 클래스의 bean ID -->
+		<!-- <constructor-arg ref="helloDAO"></constructor-arg>-->
+	</bean>
+	
+	<bean id="anotherDAO" class="com.herachoicomp.spring.dao.AnotherDAO"/>
 	
 
 </beans>

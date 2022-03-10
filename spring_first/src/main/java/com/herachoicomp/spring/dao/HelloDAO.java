@@ -1,4 +1,4 @@
-package com.herachoicomp.spring;
+package com.herachoicomp.spring.dao;
 
 public class HelloDAO {
 	
