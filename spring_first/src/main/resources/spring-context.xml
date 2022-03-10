@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- bean 설정하기 -->
+	<!-- id : bean컨테이너에 등록된 클래스를 찾을 때 사용. 클래스명과 동일하게. 소문자로 시작-->
+	<!-- class : 클래스 패키지명 경로 -->
+	<bean id="helloDAO" class="com.herachoicomp.spring.HelloDAO"></bean>
+	
+
+</beans>
