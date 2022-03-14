@@ -3,7 +3,9 @@ package com.herachoicomp.spring;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.herachoicomp.spring.service.BbsService;
 import com.herachoicomp.spring.service.HelloService;
+import com.herachoicomp.spring.vo.Article;
 
 public class HelloMain {
 
@@ -25,18 +27,20 @@ public class HelloMain {
 		System.out.println(result2);
 	*/	
 		
-		
-		//기Dependency lookup을 이용한 클래스간 참조
-		AbstractApplicationContext ctx2 = new ClassPathXmlApplicationContext("/spring-context.xml");
-		
+		/*	
 		HelloService dao3 = ctx2.getBean("helloService", HelloService.class);
 		int result3 = dao3.calcTwoNumverSquare(1, 2);
 		
 		System.out.println(result3);
+		*/			
 		
 		
-		
-		
+		//기Dependency lookup을 이용한 클래스간 참조
+		AbstractApplicationContext ctx2 = new ClassPathXmlApplicationContext("/spring-context.xml");
+
+	
+		BbsService service = ctx2.getBean("bbsService", BbsService.class);
+		service.registArticle(new Article());	
 	}
 
 }

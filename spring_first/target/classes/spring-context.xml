@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- bean 설정하기 -->
 	<!-- id : bean컨테이너에 등록된 클래스를 찾을 때 사용. 클래스명과 동일하게. 소문자로 시작-->
@@ -21,6 +23,18 @@
 	</bean>
 	
 	<bean id="anotherDAO" class="com.herachoicomp.spring.dao.AnotherDAO"/>
+	
+	
+	<!--	
+	<bean id="bbsService" class="com.herachoicomp.spring.service.BbsService">
+		<property name="articleDAO" ref="articleDAO"></property>
+	</bean>
+	<bean id="articleDAO" class="com.herachoicomp.spring.dao.ArticleDAO"></bean>
+    -->	
+	
+	
+	<!-- @Component 태그를 이용하여 자동 Bean등록 Annotation사용할 수 있도록 설정하기  -->
+	<context:component-scan base-package="com.herachoicomp.spring"></context:component-scan>
 	
 
 </beans>
