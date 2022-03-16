@@ -22,6 +22,10 @@ public class BbsService {
 		articleDAO.insertArticle(article);
 	}
 	
+	
+	public Article viewArticleDetail(String articleId) {
+		return this.articleDAO.selectARticleById(articleId);
+	}
 
 
 }

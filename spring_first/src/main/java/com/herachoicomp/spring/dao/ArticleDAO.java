@@ -12,4 +12,12 @@ public class ArticleDAO {
 		System.out.println("insert ok..");
 	}
 
+	public Article selectARticleById(String articleId) {
+		
+		Article article = new Article(10, "lee", "test", "test¿‘¥œ¥Ÿ.");
+		
+		
+		return article;
+	}
+
 }
