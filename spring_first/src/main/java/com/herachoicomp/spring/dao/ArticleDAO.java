@@ -9,10 +9,10 @@ import com.herachoicomp.spring.vo.Article;
 public class ArticleDAO {
 	
 	public void insertArticle(Article article) {
-		System.out.println("insert ok..");
+		System.out.println(article);
 	}
 
-	public Article selectARticleById(String articleId) {
+	public Article selectArticleById(String articleId) {
 		
 		Article article = new Article(10, "lee", "test", "test¿‘¥œ¥Ÿ.");
 		

@@ -24,7 +24,7 @@ public class BbsService {
 	
 	
 	public Article viewArticleDetail(String articleId) {
-		return this.articleDAO.selectARticleById(articleId);
+		return this.articleDAO.selectArticleById(articleId);
 	}
 
 

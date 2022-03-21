@@ -22,6 +22,12 @@ public class BbsController {
 	@Autowired
 	private BbsService bbsService;
 	
+	@GetMapping("")
+	public String index(){
+		return "index";
+	}
+	
+	
 	@GetMapping("/{articleId}")
 	@ResponseBody     //리턴 내용을  Json형태로 리턴해준다.
 	public Article viewDetail(@PathVariable String articleId) { 
