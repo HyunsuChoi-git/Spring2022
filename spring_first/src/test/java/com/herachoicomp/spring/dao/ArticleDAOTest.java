@@ -24,14 +24,15 @@ public class ArticleDAOTest {
 	private ArticleDAO dao;
 	
 	@Test
-	@Ignore
 	public void testSelectArticleBuId() {
-		Article article = dao.selectArticleById(null);
-		Assert.assertTrue(article.getAuthor().equals("lee"));
+		Article article = dao.selectArticleById("1");
+		System.out.println(article);
+		Assert.assertTrue(article.getAuthor().equals("HERA"));
 			
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertArticle() {
 		dao.insertArticle(null);
 	}

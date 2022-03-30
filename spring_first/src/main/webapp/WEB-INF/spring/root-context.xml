@@ -3,25 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<!-- @Component 태그를 이용하여 자동 Bean등록 Annotation사용할 수 있도록 설정하기  -->	
-	<!-- 컨트롤러만 인식하도록 하는 태그 -->
+
 	<context:component-scan base-package="com.herachoicomp.spring" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframwork.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 하위 클래스를 오토스캔 할 수 있는 태그 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-
-<!-- 파일명만 쓰면 아래 경로로 보내주는 ViewResolver -->	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property> <!-- 경로 -->
-		<property name="suffix" value=".jsp"></property> <!-- 확장자 -->	
-	</bean>
-
-
+	
+	<!-- aop 오토 프록시 설정 -->
+	<aop:aspectj-autoproxy/>
 
 </beans>

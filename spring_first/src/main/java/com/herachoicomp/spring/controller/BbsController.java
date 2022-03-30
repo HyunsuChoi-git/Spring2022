@@ -24,6 +24,7 @@ public class BbsController {
 	
 	@GetMapping("")
 	public String index(){
+		bbsService.testService();
 		return "index";
 	}
 	
@@ -44,6 +45,7 @@ public class BbsController {
 		
 		return article;
 	}
+
 	
 //	@PostMapping("/writepost")
 //	public ModelAndView writepost(Article article) {  
