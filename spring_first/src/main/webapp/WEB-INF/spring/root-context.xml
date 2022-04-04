@@ -11,13 +11,11 @@
 
 
 	<context:component-scan base-package="com.herachoicomp.spring" use-default-filters="false">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframwork.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 하위 클래스를 오토스캔 할 수 있는 태그 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- aop 오토 프록시 설정 -->
-	<aop:aspectj-autoproxy/>
-
 </beans>

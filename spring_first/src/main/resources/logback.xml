@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 30초마다 설정 파일의 변경을 확인하여 파일이 변경되면 자동으로 로딩해주는 설정.
+변경 후 restart해줄 필요 없어서 편리. -->
+<configuration scan="true" scanPeriod="30 seconds" >
+	<!-- 내부에 여러 appender태그로 설정을 할 수 있다. -->
+	<appender></appender>
+	
+	<!-- 파일마다 로그레벨을 줄 수 있다 -->
+	<logger></logger>
+	<root></root>
+</configuration>

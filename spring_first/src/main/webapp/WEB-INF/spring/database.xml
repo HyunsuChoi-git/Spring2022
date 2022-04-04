@@ -3,21 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:component-scan base-package="com.herachoicomp.spring" use-default-filters="false">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-
-
-
-	<!-- 아래 property값 중 변경이 수시로 가능한 것들은 분리해서 작성하기 위한 태그! -->
+<!-- 
+ 아래 property값 중 변경이 수시로 가능한 것들은 분리해서 작성하기 위한 태그! 
 	<context:property-placeholder location="classpath:config/database.properties" />
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="${db.driverClass}" />  <!-- mysql 드라이버 -->
-		<property name="url" value="${db.url}" />  <!-- db물리적 위치/db명 -->
+		<property name="driverClass" value="${db.driverClass}" />  mysql 드라이버
+		<property name="url" value="${db.url}" />  db물리적 위치/db명
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" /> 
 	</bean>
@@ -25,15 +27,37 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource" />
 	    <property name="configLocation" ref="classpath:mybatis-config.xml" />
-	    <!-- <property name="mapperLocation" >
+	    <property name="mapperLocations" >
 	        <list>
 	             <value></value>
 	        </list>
-	    </property> -->
+	    </property>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
+	 -->
+	 
+	 <!-- 트랜잭션 빈 설정 -->
+	 <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+	 	<property name="dataSource" ref="dataSource"></property>
+	 </bean>
+	 
+	 <!-- aop를 사용한 트랜잭션을 위해 spring에 내장된 트랜잭션 관련 어드바이스 사용 -->
+	 <tx:advice id="txAdvice" transaction-manager="transactionManager">
+								<!-- 위에서 설정한 트랜잭션 빈 name을 매니저로 설정 -->
+		<tx:attributes>  <!-- 기본설정 -->
+			<tx:method name="*"/> <!-- 모든 메소드를 트랜잭션 어드바이스로 설정 -->
+		</tx:attributes>							
+	 </tx:advice>
+	 
+	 <!-- 포인트 컷 설정 -->
+	 <aop:config>
+	 	<aop:pointcut expression="execution(* com.herachoicomp.service.*service.*(..))" 
+	 		id="transactionPointcut"/>
+		<!-- 포인트컷과 어드바이스 결합(어드바이져) -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" />
+	 </aop:config>
+	 
 </beans>

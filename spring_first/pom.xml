@@ -26,13 +26,45 @@
    	 <groupId>org.springframework</groupId>
   	  <artifactId>spring-context</artifactId>
   	  <version>4.3.18.RELEASE</version>
+ 		<exclusions>
+	  		<exclusion>
+	  			<groupId>commons-logging</groupId>
+	  		</exclusion>
+		</exclusions>
 	</dependency>
 	
 	<dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
     	<version>4.3.9.RELEASE</version>
+ 		<exclusions>
+	  		<exclusion>
+	  			<groupId>commons-logging</groupId>
+	  		</exclusion>
+		</exclusions>
 	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.29</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>jcl-over-slf4j</artifactId>
+	    <version>1.7.29</version>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.2.3</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	
 	
 	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 	<dependency>
@@ -85,20 +117,17 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-aop</artifactId>
-	    <version>5.3.9</version>
+	    <version>5.3.16</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 	<dependency>
 	    <groupId>org.aspectj</groupId>
-	    <artifactId>aspectjrt</artifactId>
-	    <version>1.9.2</version>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.9.5</version>
 	    <scope>runtime</scope>
 	</dependency>
 
-	<dependency>
- 		<groupId>org.aspectj</groupId>
-	    <artifactId>aspectjweaver</artifactId>
-	    <version>1.8.10</version>
-	</dependency>
+		
   </dependencies>
 </project>
